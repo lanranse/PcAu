@@ -1,22 +1,20 @@
 const driver = require('./Driver.js');
 const MainPage = require('./MainPage.js');
-const { expect } = require('playwright/test');
+const {test, expect } = require('playwright/test');
 
-describe('Test Suite 1', () => {
+test.describe('Test Suite 1', () => {
     let mainPage;
-    jest.setTimeout(60000);
 
-    beforeAll(async () => {
-        jest.setTimeout(30000);
+    test.beforeAll(async () => {
         await driver.init()
         mainPage = new MainPage(driver.page);
     })
 
-    afterAll(async () => {
+    test.afterAll(async () => {
         await driver.close();
     })
 
-    it('Tese Case 1', async () => {
+    test('Test Case 1', async () => {
         console.log('open mall and screenshot');
         await mainPage.openMall();
         await driver.page.evaluate(() => {
