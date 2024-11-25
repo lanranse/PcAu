@@ -1,8 +1,10 @@
 const driver = require('./Driver.js');
 const MainPage = require('./MainPage.js');
+const { expect } = require('playwright/test');
 
 describe('Test Suite 1', () => {
     let mainPage;
+    jest.setTimeout(60000);
 
     beforeAll(async () => {
         jest.setTimeout(30000);
@@ -17,14 +19,16 @@ describe('Test Suite 1', () => {
     it('Tese Case 1', async () => {
         console.log('open mall and screenshot');
         await mainPage.openMall();
-        const viewportHeight = await driver.page.evaluate(() => window.innerHeight);
-        console.log(`height is :${viewportHeight}`);
-        await driver.page.mouse.wheel(0, viewportHeight)
-        await driver.page.evaluate(() =>{
-            driver.page.scrollTo(0, 1000); // 滚动到页面垂直位置 1000
-        });
+        await driver.page.evaluate(() => {
+          const malls = document.getElementsByClassName('setting-page-main theme-scroll-bar');
+          if (malls.length > 0) {
+              malls[0].scrollTo(0, 500);
+          }});
+
         await driver.page.waitForTimeout(3000)
-        await driver.page.screenshot({path:'mallPage.png', fullPage: true});
+        // await driver.page.screenshot({path:'mallPage.png', fullPage: true});
+        await expect(driver.page).toHaveScreenshot('mallPage.png',{fullPage: true})
+
 
     })
 });
