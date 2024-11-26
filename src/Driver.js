@@ -12,7 +12,7 @@ class Driver {
             console.log("already inited, skipping");
         }
         this.app = await electron.launch({
-            executablePath: 'C:\\Users\\wyx07\\AppData\\Local\\KOOK\\app-0.90.0\\KOOK.exe',
+            executablePath: 'C:\\Users\\wyx07\\AppData\\Local\\KOOK\\app-0.90.1\\KOOK.exe',
             args: ['--remote-debugging-port=9222']
         });
         this.page = await this.app.firstWindow();
