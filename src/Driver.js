@@ -1,4 +1,6 @@
 const { _electron: electron } = require('playwright');
+const os = require('os');
+const path = require('path');
 
 class Driver {
     constructor() {
@@ -11,8 +13,10 @@ class Driver {
         if (this.isIninitialized) {
             console.log("already inited, skipping");
         }
+        let homeDir = os.homedir();
+        let appPath = path.join(homeDir, 'AppData', 'Local', 'KOOK', 'app-0.89.2', 'KOOK.exe');
         this.app = await electron.launch({
-            executablePath: 'C:\\Users\\wyx07\\AppData\\Local\\KOOK\\app-0.90.1\\KOOK.exe',
+            executablePath: appPath,
             args: ['--remote-debugging-port=9222']
         });
         this.page = await this.app.firstWindow();
