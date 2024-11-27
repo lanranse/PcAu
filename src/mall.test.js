@@ -46,12 +46,12 @@ test.describe('test suite 1', () => {
             }});
         //打开 不想上班 商详页
         await mallPage.clickProductBuXiangShangBan()
-        const element = await mallPage.Product_detail_Locate();
+        const element = await mallPage.locatorProductDetail();
         // 使用 Playwright 的 expect 进行像素对比
         await expect(element).toHaveScreenshot('Suite1Case2Expect.png');
 
         await mallPage.clickToBuy();
-        const element2 = await mallPage.Product_detail_Locate();
+        const element2 = await mallPage.locatorProductDetail();
         await expect(element2).toHaveScreenshot('Suite2Case2ToBuyExpect.png',{maxDiffPixels:2000});
 
 

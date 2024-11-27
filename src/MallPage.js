@@ -13,9 +13,10 @@ class MallPage {
     await this.page.waitForTimeout(2000)
   }
 
-  async Product_detail_Locate() {
+  async locatorProductDetail() {
     return await this.page.locator(this.Product_detail_xpath);
   }
+
 
   async clickToBuy() {
     await this.page.locator(this.ToBuy_xpath).click();
