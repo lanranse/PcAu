@@ -1,9 +1,10 @@
-const driver = require('./Driver.js');
-const MainPage = require('./MainPage.js');
-const MallPage = require('./MallPage.js');
+const driver = require('./tools/Driver.js');
+const MainPage = require('./pages/MainPage.js');
+const MallPage = require('./pages/MallPage.js');
 const {test, expect } = require('playwright/test');
 const path = require('path');
 const fs = require('fs');
+const user1 = require('./tools/user1.js');
 
 
 test.describe('test suite 2', () => {
@@ -24,6 +25,8 @@ test.describe('test suite 2', () => {
         await mainPage.clickGuildPanda();
         await mainPage.dblclickVoiceChannel();
         await driver.page.waitForTimeout(3000)
+        await user1.user1Login();
+
 
 
 
