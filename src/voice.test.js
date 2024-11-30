@@ -22,10 +22,11 @@ test.describe('test suite 2', () => {
     })
     test('test case 1', async () => {
         console.log('case1-step1:进入语音频道');
-        await mainPage.clickGuildPanda();
-        await mainPage.dblclickVoiceChannel();
-        await driver.page.waitForTimeout(3000)
+        // await mainPage.clickGuildPanda();
+        // await mainPage.dblclickVoiceChannel();
+        // await driver.page.waitForTimeout(3000)
         await user1.user1Login();
+        await driver.page.waitForTimeout(3000)
 
 
 

@@ -1,6 +1,7 @@
 const ChromeDriver  = require('./ChromeDriver.js');
 const LoginPage = require('../pages/LoginPage.js');
 const MainPage = require('../pages/MainPage');
+const assert = require('node:assert');
 
 
 async function user1Login() {
@@ -12,11 +13,17 @@ async function user1Login() {
     await loginpage.goto('https://www.kookapp.cn/app/login');
     await loginpage.clickPwdWay();
     await loginpage.inputUsername('19900010001');
-    await loginpage.inputPassword('kk123456');
+    await loginpage.inputPassword('');
     await loginpage.clickLoginButton();
 
     await mainpage.clickGuildPanda();
     await mainpage.dblclickVoiceChannel();
+    await mainpage.timewait(3000);
+
+    await mainpage.rtclickEarPhone();
+    await mainpage.clickVoicemeeterInput();
+    const check = await mainpage.getVoicemeeterCheckStatus();
+    console.assert(check.includes('checked') , '预期应该包括 "checked"，但实际状态是 ' + check);
 
 }
 

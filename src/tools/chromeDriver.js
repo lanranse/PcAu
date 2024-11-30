@@ -13,6 +13,7 @@ class ChromeDriver{
     }
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext({locale: 'zh-CN'});
+    await context.grantPermissions(['microphone'])  // 允许麦克风权限
     this.page = await context.newPage();
     this.context = context;
     this.isIninitialized = true;
