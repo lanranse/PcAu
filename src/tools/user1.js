@@ -17,7 +17,7 @@ async function user1Login() {
     await loginpage.clickLoginButton();
 
     await mainpage.clickGuildPanda();
-    await mainpage.dblclickVoiceChannel();
+    await mainpage.dblclickVoiceChannel('star');
     await mainpage.timewait(3000);
 
     await mainpage.rtclickEarPhone();
