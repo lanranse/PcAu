@@ -14,7 +14,7 @@ class Driver {
             console.log("already inited, skipping");
         }
         let homeDir = os.homedir();
-        let appPath = path.join(homeDir, 'AppData', 'Local', 'KOOK', 'app-0.90.1', 'KOOK.exe');
+        let appPath = path.join(homeDir, 'AppData', 'Local', 'KOOK', 'app-0.91.3', 'KOOK.exe');
         this.app = await electron.launch({
             executablePath: appPath,
             args: ['--remote-debugging-port=9222']

@@ -13,6 +13,8 @@ class MainPage {
     this.select_voice_channel_xpath = "//div[@class= 'block-selector']/a[2]"
     this.voice_name_input_xpath = "//input[@placeholder='输入频道名称']"
     this.create_channel_button_xpath = "//span[text()='创建频道']"
+    this.finds_xpath = "//a[@id='icon-server-search']"
+    this.preview_tip_xpath = "//div[text()='预览模式']"
   }
 
   async openMall() {
@@ -62,6 +64,13 @@ class MainPage {
   }
   async clickCreateChannelButton() {
     await this.page.locator(this.create_channel_button_xpath).click()
+  }
+  async clickfinds(){
+    await this.page.locator(this.finds_xpath).click();
+    await this.page.waitForLoadState('networkidle', { timeout: 10000 });
+  }
+  async existPreviewTip() {
+    await this.page.waitForSelector(this.preview_tip_xpath,{timeout: 5000}) // 设置合理的超时时间
   }
 }
 

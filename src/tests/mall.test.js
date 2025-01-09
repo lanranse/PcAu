@@ -1,6 +1,6 @@
-const driver = require('./tools/Driver.js');
-const MainPage = require('./pages/MainPage.js');
-const MallPage = require('./pages/MallPage.js');
+const driver = require('../tools/Driver.js');
+const MainPage = require('../pages/MainPage.js');
+const MallPage = require('../pages/MallPage.js');
 const {test, expect } = require('playwright/test');
 const path = require('path');
 const fs = require('fs');
