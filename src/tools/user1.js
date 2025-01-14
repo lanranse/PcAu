@@ -26,8 +26,7 @@ async function user1Login() {
     console.assert(check.includes('checked') , '预期应该包括 "checked"，但实际状态是 ' + check);
 
 }
-
-// 导出函数，方便其他文件调用
+//方便其他文件调用
 module.exports = {
   user1Login
 };
