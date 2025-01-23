@@ -7,6 +7,7 @@ class Driver {
         this.app = null;
         this.page = null;
         this.isIninitialized = false;
+        this.cookies = null;
     }
 
     async init() {
@@ -14,7 +15,7 @@ class Driver {
             console.log("already inited, skipping");
         }
         let homeDir = os.homedir();
-        let appPath = path.join(homeDir, 'AppData', 'Local', 'KOOK', 'app-0.91.3', 'KOOK.exe');
+        let appPath = path.join(homeDir, 'AppData', 'Local', 'KOOK', 'app-0.91.4', 'KOOK.exe');
         this.app = await electron.launch({
             executablePath: appPath,
             args: ['--remote-debugging-port=9222']
@@ -22,6 +23,10 @@ class Driver {
         this.page = await this.app.firstWindow();
         await this.page.waitForLoadState('load');
         this.isIninitialized = true;
+        // this.cookies = await this.page.context().cookies();  Fail
+        // this.cookies = await this.page.evaluate(() => window.electronCookies);
+
+        console.log(this.cookies)
         console.log('Driver initialized successfully.')
     }
 

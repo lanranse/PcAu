@@ -25,7 +25,7 @@ test.describe('test suite 2', () => {
         console.log('case1-:创建语音频道');
         await mainPage.clickGuildPanda();
         await mainPage.clickAddChannel();
-        await mainPage.clickSelectVoiceChannel();
+        await mainPage.clickSelectTypeChannel();
         await mainPage.inputVoiceNameInput();
         await mainPage.clickCreateChannelButton();
 
