@@ -41,11 +41,13 @@ test.describe('test suite JoinGuild', () => {
 
   test('test case create-2', async ({}, testInfo) => {
     console.log('case2:创建服务器');
-    await mainPage.clickCreateGuild();
+    await mainPage.clickCreateGuild(); // 这是一堆操作
     await mainPage.timewait(1000)
     const shot_create = await driver.page.screenshot({path:'../screenShot/createGuild.png'})
     await testInfo.attach('create-1', { body: shot_create, contentType: 'image/png' });
 
+    const res = await api.post('/api/v3/guild/delete')
+    const payload = {guild_id: "4786705905614597"}
   })
 
 })

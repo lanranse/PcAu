@@ -5,6 +5,7 @@ class MainPage {
     this.page = page;
     this.mall_xpath = "//div[@class=\'win-title-inner\']/div[@class=\'right\']/div[2]/div[2]"
     this.guild_panda_xpath = "//img[@alt='熊猫星']"
+    this.ad_xpath = '//a[@id="app-eventcenter"]'
     this.guild_var_xpath = "//img[@alt='%s']"
     this.voice_channel_xpath = "//span[text()='%s']"
     this.control_earphone_xpath = '//div[@class="audio-controller-icos"]/div[3]/*[name()="svg"]/*[name()="g"]/*[name()="g"]/*[name()="g"]'
@@ -38,6 +39,11 @@ class MainPage {
 
   async clickGuildPanda() {
     await this.page.locator(this.guild_panda_xpath).click()
+    await this.page.waitForLoadState('networkidle', { timeout: 10000 });
+  }
+
+  async clickAd() {
+    await this.page.locator(this.ad_xpath).click()
     await this.page.waitForLoadState('networkidle', { timeout: 10000 });
   }
   async clickGuildVar(name) {

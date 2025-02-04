@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 
-test.describe('test suite 1', () => {
+test.describe('test suite Mall', () => {
     let mainPage;
     let mallPage;
 

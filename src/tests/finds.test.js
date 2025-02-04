@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 
-test.describe('test suite finds', () => {
+test.describe('TestSuite发现页 ', () => {
   let mainPage;
   let mallPage;
   let findsPage;

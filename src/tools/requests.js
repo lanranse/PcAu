@@ -34,7 +34,23 @@ class Requests {
     const response = await this.context.delete(fullPath, {
       headers: mergedHeaders,
     });
-    assert(response.ok(), `DELETE request failed: ${response.status()} ${response.statusText()}`);
+    assert(response.ok(), `Request Failed: ${response.status()} ${response.statusText()}`);
+    return response;
+
+  }
+
+  async post(path, params= {}, headers = {}) {
+    if (!this.context) {
+      await this.init();
+    }
+    const mergedHeaders = this.mergeHeaders(headers);
+    const queryString = new URLSearchParams(params).toString();
+    const fullPath = queryString ? `${path}?${queryString}` : path;
+
+    const response = await this.context.post(fullPath, {
+      headers: mergedHeaders,
+    });
+    assert(response.ok(), `Request Failed: ${response.status()} ${response.statusText()}`);
     return response;
 
   }
