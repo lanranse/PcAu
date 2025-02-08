@@ -50,8 +50,6 @@ test.describe('TestSuite发现页 ', () => {
     await findsPage.clickResultFirst()
     await mainPage.existPreviewTip()
     await driver.page.screenshot({path:'../screenShot/finds_previews.png'})
-
-
   })
 });
 
